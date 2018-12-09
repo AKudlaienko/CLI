@@ -1038,7 +1038,7 @@ def check_mode():
             t = JiraCli(get_arguments_auto())
             t.interactive_m()
         else:
-            print('\nUsage:\n', colored('- AUTO-mode:', 'yellow'), '\n %s --auto --project_id "ATLAS" --issuetype "Sub-task" --ticket_id "ATLAS-42323" --summary "34234234" --description "see attachment"  --attachment "/tmp/some_logs.log"\n' % sys.argv[0])
+            print('\nUsage:\n', colored('- AUTO-mode:', 'yellow'), '\n %s --auto --project_id "GMM" --issuetype "Sub-task" --ticket_id "GMM-42323" --summary "34234234" --description "see attachment"  --attachment "/tmp/some_logs.log"\n' % sys.argv[0])
             print(colored('- Interactive mode:', 'yellow'), '\n Just start without any arguments: %s' % sys.argv[0])
     except Exception:
         print(colored("Exception:\n", 'red'), '{}'.format(traceback.format_exc()))

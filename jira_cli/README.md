@@ -45,7 +45,8 @@ For code block, you may use: ```{code}some command here{code}```
 
 ###### ACHTUNG
 If you use this script first time, you should start it in the interactive mode first time. However also you can provide credentials in the script.
-Example: ```sh
+Example:
+```sh
 credentials_for_jira = {"username": "test", "passwd": "123456"}
 ```
 If you don't want to provide credentials as plain text in the script, it will ask your credentials for access to the JIRA and then,

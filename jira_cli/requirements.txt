@@ -1,0 +1,6 @@
+jira
+termcolor
+diskcache
+urllib3
+argparse
+inquirer

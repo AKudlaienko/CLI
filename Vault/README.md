@@ -1,4 +1,4 @@
-# tools
+# Vault
 A simple script to build the tree of Vault
 ###### Requirements
 

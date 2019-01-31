@@ -1,0 +1,46 @@
+{# Herere you should define some variables like you have in your ansible environment_vars, group_vars etc ...#}
+
+{% set clients_subscriptions = ['backup'] %}
+{% set inventory_hostname = "test-core1.go.atl" %}
+{% set for_monitoring = false %}
+{% set sensu_api_credentials = [{"team": "test", "user": "user1", "password": "123456"}] %}
+
+{# The body of the Jinga2 Template #}
+{
+  "client": {
+    "disk": {
+      "usage": {
+      {%- if "data" in clients_subscriptions -%}
+          "options": "-I /, /data"
+      {%- elif "backup" in clients_subscriptions -%}
+          "options": "-I /, /vz"
+      {%- else -%}
+          "options": ""
+      {%- endif -%}
+      }
+    },
+
+    {%- if "staging" in inventory_hostname %}
+    "environment": "staging"
+    {%- else %}
+    "environment": "production"
+    {% endif %}
+
+    {%- if for_monitoring and sensu_api_credentials|length >= 1 and "int-core" in inventory_hostname -%}
+    ,
+    {% for t_cred in sensu_api_credentials %}
+    {%- if loop.last -%}
+      "{{ t_cred['team']}}": {
+        "user": "{{t_cred['user']}}",
+        "password": "{{t_cred['password']}}"
+      }
+    {%- else -%}
+      "{{t_cred['team']}}": {
+        "user": "{{t_cred['user']}}",
+        "password": "{{t_cred['password']}}"
+      },
+    {% endif %}
+    {% endfor %}
+    {% endif %}
+  }
+}

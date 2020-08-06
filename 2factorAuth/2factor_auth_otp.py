@@ -65,7 +65,7 @@ if __name__ == "__main__":
             renew_otp(decode_qr(args.qrcode))
     else:
         if args.qrcode:
-            print(decode_qr(decode_qr(args.qrcode)))
+            print(generate_otp(decode_qr(args.qrcode)))
         else:
             print(generate_otp(args.secret))
 
